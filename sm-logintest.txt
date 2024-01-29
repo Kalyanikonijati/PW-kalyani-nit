@@ -10,6 +10,7 @@ Headless and Headful Modes:
 Playwright supports both headless (without a visible browser UI) and headful (with a visible browser UI) modes. This flexibility is useful for different testing and automation scenarios.
 Automated Testing:
 
+
 Playwright is often used for end-to-end testing of web applications. You can simulate user interactions, navigate through pages, and validate the behavior of your application.
 Scraping and Data Extraction:
 
