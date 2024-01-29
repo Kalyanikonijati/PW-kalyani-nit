@@ -1,3 +1,4 @@
+
 {
   "name": "pwtraining",
   "version": "1.0.0",
@@ -12,4 +13,5 @@
     "@playwright/test": "^1.41.1",
     "playwright": "^1.41.1"
   }
+  
 }
