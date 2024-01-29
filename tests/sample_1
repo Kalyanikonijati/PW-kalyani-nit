@@ -9,13 +9,5 @@ test('my practice', async ({ page }) => {
   await page.locator("#docsearch-input").fill('image');
   await page.waitForTimeout(3000);
   await page.locator('#docsearch-item-2').click();
-  let pageText = await page.locator('//*[@id="image-tags"]').textContent(); 
-  // await page.locator("[aria-label='58k+ stargazers on GitHub']").click();
-  // Click the get started link.
-  // await page.getByRole('link', { name: 'star' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  // await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  //// get text 58K and print to console.
 });
-
-//#docsearch-item-2
