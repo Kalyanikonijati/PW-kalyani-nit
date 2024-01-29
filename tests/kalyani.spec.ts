@@ -8,8 +8,9 @@ test('my practice', async ({ page }) => {
   await page.locator('.DocSearch-Button-Placeholder').click();
   await page.waitForTimeout(5000);
   await page.locator("#docsearch-input").fill('image');
+  await page.waitForTimeout(3000);
   await page.locator('#docsearch-item-2').click();
-  //let pageText = await page.locator('').textContent(); 
+  let pageText = await page.locator('//*[@id="image-tags"]').textContent(); 
   // await page.locator("[aria-label='58k+ stargazers on GitHub']").click();
   // Click the get started link.
   // await page.getByRole('link', { name: 'star' }).click();
