@@ -9,6 +9,7 @@ test('my practice', async ({ page }) => {
   await page.waitForTimeout(5000);
   await page.locator("#docsearch-input").fill('image');
   await page.locator('#docsearch-item-2').click();
+  
   //let pageText = await page.locator('').textContent();
   
   // await page.locator("[aria-label='58k+ stargazers on GitHub']").click();
