@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-// get text 58K and print to console.
 // this is git version control from SM
 test('my practice', async ({ page }) => {
   await page.goto('https://playwright.dev/');
