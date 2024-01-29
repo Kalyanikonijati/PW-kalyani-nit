@@ -9,5 +9,5 @@ test('my practice', async ({ page }) => {
   await page.locator("#docsearch-input").fill('image');
   await page.waitForTimeout(3000);
   await page.locator('#docsearch-item-2').click();
-  //// get text 58K and print to console.
+  // get text 58K and print to console.
 });
