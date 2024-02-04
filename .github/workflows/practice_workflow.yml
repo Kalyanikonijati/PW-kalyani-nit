@@ -2,3 +2,28 @@
 # i should only tests on kalyani.specs
 # use ubuntu 
 
+name: Run Playwright Tests
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubantu
+    steps:
+    - uses: actions/checkout@v2
+      name: Check out repository code
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Install packages
+      run: npm install
