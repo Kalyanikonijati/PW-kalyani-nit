@@ -28,3 +28,6 @@ jobs:
 
     - name: run tests
       run: npx playwright test
+
+    - name: show file content
+      run: dir
