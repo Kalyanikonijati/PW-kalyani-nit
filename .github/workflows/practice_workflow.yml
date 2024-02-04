@@ -2,7 +2,7 @@
 # i should only tests on kalyani.specs
 # use ubuntu 
 
-name: Run Playwright Tests
+name: Run kalyani.specs
 
 on:
   workflow_dispatch: 
@@ -12,10 +12,12 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+      - cron: '0 * * * *'
 
 jobs:
   test:
-    runs-on: ubantu
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       name: Check out repository code
