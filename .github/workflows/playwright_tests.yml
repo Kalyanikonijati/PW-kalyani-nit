@@ -23,3 +23,5 @@ jobs:
     - name: Install packages
       run: npm install
      
+    - name: Install Playwright browsers
+      run: npx playwright install
