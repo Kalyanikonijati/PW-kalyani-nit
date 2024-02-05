@@ -29,4 +29,6 @@ jobs:
 
     - name: Install packages
       run: npm install
-
+   
+    - name: Running Specific page
+      run: npx playwright test kalyani.specs.ts
