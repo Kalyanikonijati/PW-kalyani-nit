@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://demo.playwright.dev/todomvc');
+  await page.goto('https://example.cypress.io/todo#/');
 });
 //create todo list
 const TODO_ITEMS = [
@@ -20,7 +20,7 @@ test.describe('New Todo', () => {
     await newTodo.press('Enter');
 
     // Make sure the list only has one todo item.
-    await expect(page.getByTestId('todo-title')).toHaveText([
+    await expect(page.getByTestId('todo-https://example.cypress.io/todo#/')).toHaveText([
       TODO_ITEMS[0]
     ]);
 
