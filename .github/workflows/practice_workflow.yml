@@ -13,7 +13,7 @@ on:
     branches:
       - main
   schedule:
-      - cron: '0 * * * *'
+      - cron: '* * 1 * *'
 
 jobs:
   test:
@@ -29,7 +29,15 @@ jobs:
 
     - name: Install packages
       run: npm install
+
+    - name: Install Playwright browsers
+      run: npx playwright install
    
+<<<<<<< HEAD
     - name: Running Specific page
       run: npx playwright test ./tests/kalyani.spec.ts 
 
+=======
+    - name: run tests
+      run: npm practrice workflow
+>>>>>>> 8e8d9dd064a5b5fdad01140bf6d79d935d372365
