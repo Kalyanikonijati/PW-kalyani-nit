@@ -10,7 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@playwright/test": "^1.41.1",
+    "cypress": "^13.6.4",
     "lodash": "^4.17.21",
     "playwright": "^1.41.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12"
   }
 }
