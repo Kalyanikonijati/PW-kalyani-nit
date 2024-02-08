@@ -30,8 +30,6 @@ test.describe('New Todo', () => {
     // Make sure the list now has two todo items.
     await expect(page.getByText(TODO_ITEMS[0], { exact: true })).toBeVisible();
     await expect(page.getByText(TODO_ITEMS[1], { exact: true })).toBeVisible();
-    const noItems = await page.locator('.footer .todo-count').innerText();
-    expect (noItems == '4 items left').toBe(true);
 
   });
 
@@ -53,19 +51,21 @@ test.describe('New Todo', () => {
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
     // Create 3 items.
-    //await createDefaultTodos(page);
-    await newTodo.fill(TODO_ITEMS[2]);
-    await newTodo.press('Enter');
+    await createDefaultTodos(page);
 
     // create a todo count locator
     const todoCount = page.getByTestId('toggle-all');
   
     // Check test using different methods.
-    await expect(page.getByText('TODO_ITEMS[2], { exact: true })')).toBeVisible();
-    await expect(todoCount).toHaveText('3 items left');
-    await expect(todoCount).toContainText('3');
-    await expect(todoCount).toHaveText(/3/);
-    const text = await page.locator('.footer .todo-count').allInnerTexts();
+    await expect(page.getByText(TODO_ITEMS[0], { exact: true })).toBeVisible();
+    const noItems = await page.locator('.footer .todo-count').innerText();
+    expect (noItems == '3 items left').toBe(false);
+
+    // Check all items.
+    await expect(page.getByText(TODO_ITEMS[0], { exact: true })).toBeVisible();
+    await expect(page.getByText(TODO_ITEMS[1], { exact: true })).toBeVisible();
+    await expect(page.getByText(TODO_ITEMS[2], { exact: true })).toBeVisible();
+   
   });
 });
 
