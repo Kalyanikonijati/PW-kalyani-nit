@@ -62,11 +62,10 @@ test.describe('New Todo', () => {
   
     // Check test using different methods.
     await expect(page.getByText('TODO_ITEMS[2], { exact: true })')).toBeVisible();
-    const text = await page.locator('.footer .todo-count').allInnerTexts();
     await expect(todoCount).toHaveText('3 items left');
     await expect(todoCount).toContainText('3');
     await expect(todoCount).toHaveText(/3/);
-
+    const text = await page.locator('.footer .todo-count').allInnerTexts();
   });
 });
 
