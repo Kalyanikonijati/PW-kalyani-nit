@@ -3,11 +3,12 @@ import { test, expect, type Page } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
   await page.goto('https://example.cypress.io/todo#/');
 });
-//create todo list
+//create todo list here
 const TODO_ITEMS = [
   'buy some cheese',
   'feed the cat',
   'book a doctors appointment'
+  'finish your work'
 ];
 
 test.describe('New Todo', () => {
