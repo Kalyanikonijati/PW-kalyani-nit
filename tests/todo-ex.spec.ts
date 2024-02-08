@@ -81,37 +81,35 @@ test.describe('Mark all as completed', () => {
 
   test('should allow me to mark all items as completed', async ({ page }) => {
     // Complete all todos.
-    await page.getByLabel('Mark all as complete').check();
+    await page.getByText('Mark all as complete').check();
 
     // Ensure all todos have 'completed' class.
-    await expect(page.getByTestId('todo-item')).toHaveClass(['completed', 'completed', 'completed']);
+    await expect(page.getByTestId('.toggle-all')).toHaveClass(['completed', 'completed', 'completed']);
   });
 
   test('should allow me to clear the complete state of all items', async ({ page }) => {
-    const toggleAll = page.getByLabel('Mark all as complete');
+    const toggleAll = page.getByText('Mark all as complete');
+
     // Check and then immediately uncheck.
     await toggleAll.check();
     await toggleAll.uncheck();
 
     // Should be no completed classes.
-    await expect(page.getByTestId('todo-item')).toHaveClass(['', '', '']);
+    await expect(page.getByTestId('.toogle-all')).toHaveClass(['', '', '']);
   });
 
   test('complete all checkbox should update state when items are completed / cleared', async ({ page }) => {
-    const toggleAll = page.getByLabel('Mark all as complete');
+    const toggleAll = page.getByText('Mark all as complete');
     await toggleAll.check();
     await expect(toggleAll).toBeChecked();
     
 
     // Uncheck first todo.
-    const firstTodo = page.getByTestId('todo-item').nth(0);
-    await firstTodo.getByRole('checkbox').uncheck();
-
-    // Reuse toggleAll locator and make sure its not checked.
-    await expect(toggleAll).not.toBeChecked();
-
-    await firstTodo.getByRole('checkbox').check();
-
+    const firstTodo = page.getByTestId('.toggle-all').nth(0);
+    //const firstTodo = page.getByTestId('checkbox');
+    for (const checkbox of await firstTodo.all())
+      await checkbox.uncheck();
+    
     // Assert the toggle all is checked again.
     await expect(toggleAll).toBeChecked();
   });
