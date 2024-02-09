@@ -1,21 +1,14 @@
 import { test, expect, type Page } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://example.cypress.io/todo#/');
-});
-//create todo list
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment'
-];
+import { TODO_ITEMS } from '../data/constance';
 
 test.describe('Editing', () => {
   test.beforeEach(async ({ page }) => {
+    await page.goto('todo');
     await createDefaultTodos(page);
   });
 
   test('should hide other controls when editing', async ({ page }) => {
+    await page.goto('todo');
     const todoItem = page.getByTestId('todo-item').nth(1);
     await todoItem.dblclick();
     await expect(todoItem.getByRole('checkbox')).not.toBeVisible();
@@ -25,6 +18,7 @@ test.describe('Editing', () => {
   });
 
   test('should save edits on blur', async ({ page }) => {
+    await page.goto('todo');
     const todoItems = page.getByTestId('todo-item');
     await todoItems.nth(1).dblclick();
     await todoItems.nth(1).getByRole('textbox', { name: 'Edit' }).fill('buy some sausages');
@@ -38,6 +32,7 @@ test.describe('Editing', () => {
   });
 
   test('should trim entered text', async ({ page }) => {
+    await page.goto('todo');
     const todoItems = page.getByTestId('todo-item');
     await todoItems.nth(1).dblclick();
     await todoItems.nth(1).getByRole('textbox', { name: 'Edit' }).fill('    buy some sausages    ');

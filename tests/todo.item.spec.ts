@@ -1,18 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://example.cypress.io/todo#/');
-});
-//create todo list
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment'
-];
+import { TODO_ITEMS } from '../data/constance';
 
 test.describe('Item', () => {
 
   test('should allow me to mark items as complete', async ({ page }) => {
+    await page.goto('todo');
     // create a new todo locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
@@ -38,6 +30,7 @@ test.describe('Item', () => {
   });
 
   test('should allow me to un-mark items as complete', async ({ page }) => {
+    await page.goto('todo');
     // create a new todo locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 

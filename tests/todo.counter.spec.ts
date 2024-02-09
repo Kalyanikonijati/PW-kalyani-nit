@@ -1,17 +1,9 @@
 import { test, expect, type Page } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://example.cypress.io/todo#/');
-});
-//create todo list
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment'
-];
+import { TODO_ITEMS } from '../data/constance';
 
 test.describe('Counter', () => {
   test('should display the current number of todo items', async ({ page }) => {
+    await page.goto('todo');
     // create a new todo locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
     

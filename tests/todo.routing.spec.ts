@@ -1,17 +1,9 @@
 import { test, expect, type Page } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://example.cypress.io/todo#/');
-});
-//create todo list
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment'
-];
+import { TODO_ITEMS } from '../data/constance';
 
 test.describe('Routing', () => {
   test.beforeEach(async ({ page }) => {
+    await page.goto('todo');
     await createDefaultTodos(page);
     // make sure the app had a chance to save updated todos in storage
     // before navigating to a new view, otherwise the items can get lost :(
@@ -19,6 +11,7 @@ test.describe('Routing', () => {
   });
 
   test('should allow me to display active items', async ({ page }) => {
+    await page.goto('todo');
     const todoItem = page.getByTestId('todo-item');
     await page.getByTestId('todo-item').nth(1).getByRole('checkbox').check();
 
@@ -28,6 +21,7 @@ test.describe('Routing', () => {
   });
 
   test('should respect the back button', async ({ page }) => {
+    await page.goto('todo');
     const todoItem = page.getByTestId('todo-item'); 
     await page.getByTestId('todo-item').nth(1).getByRole('checkbox').check();
 
@@ -53,6 +47,7 @@ test.describe('Routing', () => {
   });
 
   test('should allow me to display completed items', async ({ page }) => {
+    await page.goto('todo');
     await page.getByTestId('todo-item').nth(1).getByRole('checkbox').check();
     await page.getByRole('link', { name: 'Completed' }).click();
     await expect(page.getByTestId('todo-item')).toHaveCount(1);

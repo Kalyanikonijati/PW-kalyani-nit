@@ -1,14 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://example.cypress.io/todo#/');
-});
-//create todo list
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment'
-];
+import { TODO_ITEMS } from '../data/constance';
 
 test.describe('Mark all as completed', () => {
 
@@ -21,6 +12,7 @@ test.describe('Mark all as completed', () => {
     });
 
   test('should allow me to mark all items as completed', async ({ page }) => {
+    await page.goto('todo');
     // Complete all todos.
     await page.getByText('Mark all as complete').check();
 
@@ -29,6 +21,7 @@ test.describe('Mark all as completed', () => {
   });
 
   test('should allow me to clear the complete state of all items', async ({ page }) => {
+    await page.goto('todo');
     const toggleAll = page.getByText('Mark all as complete');
 
     // Check and then immediately uncheck.
@@ -40,6 +33,7 @@ test.describe('Mark all as completed', () => {
   });
 
   test('complete all checkbox should update state when items are completed / cleared', async ({ page }) => {
+    await page.goto('todo');
     const toggleAll = page.getByText('Mark all as complete');
     await toggleAll.check();
     await expect(toggleAll).toBeChecked();
@@ -64,4 +58,4 @@ async function createDefaultTodos(page: Page) {
     await newTodo.fill(item);
     await newTodo.press('Enter');
   }
-}
+}                           
