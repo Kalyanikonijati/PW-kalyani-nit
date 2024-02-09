@@ -71,3 +71,13 @@ test.describe('Editing', () => {
     await expect(todoItems).toHaveText(TODO_ITEMS);
   });
 });
+
+async function createDefaultTodos(page: Page) {
+  // create a new todo locator
+  const newTodo = page.getByPlaceholder('What needs to be done?');
+
+  for (const item of TODO_ITEMS) {
+    await newTodo.fill(item);
+    await newTodo.press('Enter');
+  }
+}
