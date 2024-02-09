@@ -1,4 +1,4 @@
-name: Windows test runner
+name: Windows test Runner
 
 on:
   workflow_dispatch: 
