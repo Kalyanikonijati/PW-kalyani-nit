@@ -1,4 +1,4 @@
-name: Run Playwright Tests
+name: Windows test runner
 
 on:
   workflow_dispatch: 
